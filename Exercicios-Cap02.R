@@ -6,7 +6,7 @@
 # Configurando o diretório de trabalho
 # Coloque entre aspas o diretório de trabalho que você está usando no seu computador
 # Não use diretórios com espaço no nome
-setwd("C:/FCD/BigDataRAzure/Cap02")
+setwd("C:/Dev/DSA/FCD/BigDataRAzure")
 getwd()
 
 # Exercício 1 - Crie um vetor com 30 números inteiros
@@ -18,7 +18,7 @@ typeof(vetorExerc1)
 
 
 # Exercício 2 - Crie uma matriz com 4 linhas e 4 colunas preenchida com números inteiros
-matriz_Exerc2 <- matrix(c(1:16), nr = 4)
+matriz_Exerc2 <- matrix(c(1:16), nr = 4, ncol = 4)
 matriz_Exerc2
 
 # Exercício 3 - Crie uma lista unindo o vetor e matriz criados anteriormente
@@ -34,6 +34,7 @@ length(listaExerc3)
 read.table(file = "effort.dat.txt", header = TRUE,)
 read.table(file = "http://data.princeton.edu/wws509/datasets/effort.dat", header = TRUE)
 dataframeExer4 <- data.frame(read.table(file = "http://data.princeton.edu/wws509/datasets/effort.dat", header = TRUE))
+class(dataframeExer4)
 dataframeExer4
 
 
@@ -46,9 +47,12 @@ dataframeExer4
 
 # Exercício 6 - Imprima na tela o dataframe iris, verifique quantas dimensões existem no dataframe iris e imprima um resumo do dataset
 
+iris
+class(iris)
 View(iris)
 head(iris)
 dim(iris) # 150 linhas e 5 colunas
+str(iris)
 summary(iris)
 
 
@@ -57,6 +61,7 @@ summary(iris)
 par(mgp=c(1,1,0))
 
 #barplot(iris$Sepal.Length, iris$Sepal.Width)
+plot(iris$Sepal.Length, iris$Sepal.Width)
 hist(iris$Sepal.Length)
 hist(iris$Sepal.Width)
 
@@ -83,4 +88,5 @@ dataFrameExerc9_comSlice
 dataFrameExerc9_15firstLine$Sepal.Length > 6
 ?RSiteSearch
 ?filter
+filter(dataFrameExerc9_comSlice, Sepal.Length > 7)
 filter(dataFrameExerc9_comSlice, dataFrameExerc9_comSlice$Sepal.Length > 6)
