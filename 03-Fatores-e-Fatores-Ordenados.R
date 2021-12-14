@@ -44,3 +44,60 @@ summary(vec2)
 data = c(1,2,2,3,1,2,3,3,1,2,3,3,1)
 fdata = factor(data)
 fdata
+
+rdata = factor(data, (labels = c("I", "II", "III")))
+rdata
+
+# Fatores não ordenados
+set1 <- c("AA", "B", "BA", "CC", "CA", "AA", "BA", "CC", "CC")
+set1
+
+# Transformando os dados.
+f.set1 <- factor(set1)
+f.set1
+class(f.set1)
+is.ordered(f.set1)
+
+# fatores ordenados
+o.set1 <- factor(set1,
+                 levels = c("CA", "BA", "AA", "CC", ""),
+                 ordered = TRUE)
+o.set1
+is.ordered(o.set1)
+
+as.numeric(o.set1)
+table(o.set1)
+
+# Fatores e Dataframes
+getwd()
+setwd("C:/Dev/DSA/FCD/BigDataRAzure")
+df <- read.csv2("etnias.csv", sep = ',')
+df
+
+# variáveis do tipo fator
+str(df)
+View(df)
+df$Sexo <- factor(df$Sexo, labels = c("F", "M"))
+df$Etnia <- factor(df$Etnia, labels = c("Branco", "Negro", "Pardo"))
+str(df)
+View(df)
+
+
+
+# Níveis dos fatores
+levels(df$Etnia)
+summary(df$Etnia)
+
+
+# Plot
+plot(df$Idade~df$Etnia, xlab ='Etnia', ylab = 'Idade', main = 'Idade por Etinia')
+
+# Regressão
+summary(lm(Idade~Etnia, data = df))
+
+# Convertendo uma coluna em variável categórica. isso criará um fator ordenado
+df
+str(df)
+df$Estado_Civil.cat <- factor(df$Estado_Civil, labels = c("Solteiro", "Casado", "Divorciado"))
+df
+str(df)
